@@ -9,6 +9,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.g7_1105ss.weatherworld.R;
+import com.example.g7_1105ss.weatherworld.WeatherResponse;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 
 public class WeatherAPI {
 
@@ -27,6 +34,7 @@ public class WeatherAPI {
             public void onResponse(String response) {
                 // all ok
                 Log.d("RESPONSE", response);
+                parseJSON(response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -37,6 +45,15 @@ public class WeatherAPI {
         });
 
         queue.add(request);
+
+    }
+
+    private void parseJSON(String response) {
+        Reader reader = new StringReader(response);
+        Gson gson = new GsonBuilder().create();
+
+        WeatherResponse weatherResponse = gson.fromJson(reader, WeatherResponse.class);
+        Log.d("response", weatherResponse.toString());
 
     }
 }
