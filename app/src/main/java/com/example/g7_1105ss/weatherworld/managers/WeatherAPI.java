@@ -17,10 +17,20 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 
-public class WeatherAPI {
+public class WeatherAPI{
 
     public static final String BASE_URL =  "http://api.openweathermap.org/data/2.5/";
     public static final String METHOD_CURRENT_WHEATER = "weather";
+
+    public interface WeatherDownloadFinished{
+        public void newWeatherData(String cityName, float temperature);
+    }
+
+    private WeatherDownloadFinished listener;
+
+    public void setOnWeatherDownloadFinished (WeatherDownloadFinished listener) {
+        this.listener = listener;
+    }
 
     public void getCurrentConditions(Context context, String city, String language){
 
@@ -55,5 +65,8 @@ public class WeatherAPI {
         WeatherResponse weatherResponse = gson.fromJson(reader, WeatherResponse.class);
         Log.d("response", weatherResponse.toString());
 
+        if (listener != null){
+            listener.newWeatherData(weatherResponse.getName(), weatherResponse.getMain().getTemperature());
+        }
     }
 }

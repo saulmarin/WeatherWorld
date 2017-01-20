@@ -1,13 +1,35 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FAFF96"
     tools:context="com.example.g7_1105ss.weatherworld.WeatherDetailFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/fragment_weather_details_city_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:text="Malaga"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"
+        android:gravity="top|center"
+        android:paddingTop="30dp"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/fragment_weather_details_temp"
+        tools:text="23 ºC"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="150sp"
+        android:gravity="bottom|right"
+        android:textColor="#f44"/>
+
+    <ImageView
+        android:id="@+id/fragment_weather_details_icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/sun"/>
+
+</RelativeLayout>

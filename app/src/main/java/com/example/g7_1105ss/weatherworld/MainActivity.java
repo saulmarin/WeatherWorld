@@ -12,7 +12,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        WeatherAPI api = new WeatherAPI();
-        api.getCurrentConditions(this, "Malaga", "es");
+        WeatherDetailFragment fragment = (WeatherDetailFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_weather_details);
+        fragment.showWeather("Malaga", "es");
+
     }
 }

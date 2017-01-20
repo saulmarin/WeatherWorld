@@ -53,7 +53,7 @@ public class WeatherResponse {
     @SerializedName("weather") private Weather wheater;
 
 
-    private class Main {
+    public class Main {
         @SerializedName("temp") private float temperature;
         @SerializedName("humidity") private int humidity;
 
@@ -74,7 +74,7 @@ public class WeatherResponse {
         }
     }
 
-    private class Weather {
+    public class Weather {
         @SerializedName("main") String main;
         @SerializedName("description") String description;
         @SerializedName("icon") String icon;
@@ -104,7 +104,7 @@ public class WeatherResponse {
         }
     }
 
-    private class Coord {
+    public class Coord {
         @SerializedName("lon") private float longitude;
         @SerializedName("lat") private float latitude;
 
